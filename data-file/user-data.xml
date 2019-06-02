@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root id="mysql">
+    <users>
+        <user id="1">
+            <lastname>khatami doost</lastname>
+            <name>alireza</name>
+        </user>
+        <user id="2">
+            <lastname>mirzaei</lastname>
+            <name>hamed</name>
+        </user>
+        <user id="3">
+            <lastname>mosavi</lastname>
+            <name>morteza</name>
+        </user>
+    </users>
+</root>
