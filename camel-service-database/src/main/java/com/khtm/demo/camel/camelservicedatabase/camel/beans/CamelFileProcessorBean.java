@@ -1,5 +1,6 @@
 package com.khtm.demo.camel.camelservicedatabase.camel.beans;
 
+import com.google.gson.GsonBuilder;
 import com.khtm.demo.camel.camelservicedatabase.datamodel.Root;
 import com.khtm.demo.camel.camelservicedatabase.datamodel.User;
 import org.apache.commons.io.IOUtils;
@@ -19,6 +20,10 @@ public class CamelFileProcessorBean {
         Unmarshaller unmarshall = context.createUnmarshaller();
         Root root = (Root) unmarshall.unmarshal(new InputStreamReader(IOUtils.toInputStream(fileContent)));
         return root;
+    }
+
+    public String getUserJson(User user){
+        return new GsonBuilder().create().toJson(user, User.class);
     }
 
 }
