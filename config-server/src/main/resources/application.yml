@@ -9,6 +9,10 @@ spring:
           uri: D:\Projects\code-examples\my-projects\git-repository-spring-cloud-camel
   application:
     name: config-server
+  boot:
+    admin:
+      client:
+        url: http://localhost:8686
 
 eureka:
   client:
