@@ -7,6 +7,7 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,14 +16,17 @@ public class CamelDatabaseRoute extends RouteBuilder {
     @Autowired
     public CamelFileProcessorBean camelFileProcessorBean;
 
+    @Autowired
+    private Environment environment;
+
     @Override
     public void configure() throws Exception {
-        from("file:D:\\Projects\\code-examples\\my-projects\\camel-route-directory\\input")
+        from("file:" + environment.getProperty("file-route.from"))
                 .id("Camel-File-Transfer")
-                .to("file:D:\\Projects\\code-examples\\my-projects\\camel-route-directory\\output")
+                .to("file:" + environment.getProperty("file-route.to"))
                 .log(LoggingLevel.INFO, "File Moved to Destination");
 
-        from("file:D:\\Projects\\code-examples\\my-projects\\camel-route-directory\\output")
+        from("file:" + environment.getProperty("file-route.to"))
                 .log(LoggingLevel.INFO, "New file found for analysis")
                 .bean(camelFileProcessorBean, "analysisFile(${body})")
                 .log(LoggingLevel.INFO, "${body}")

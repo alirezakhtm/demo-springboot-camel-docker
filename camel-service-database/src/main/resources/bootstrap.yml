@@ -35,5 +35,10 @@ management:
     web:
       exposure:
         include: hawtio,jolokia
+
 hawtio:
   authenticationEnabled: false
+
+file-route:
+  from: D:\Projects\code-examples\my-projects\camel-route-directory\input
+  to: D:\Projects\code-examples\my-projects\camel-route-directory\output
